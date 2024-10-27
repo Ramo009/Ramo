@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Layout with Sections and Columns</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+      }
+      header h1 {
+        margin: 0;
+      }
+      .search-bar {
+        margin: 10px;
+        text-align: center;
+      }
+      .search-bar input[type="text"] {
+        padding: 8px;
+        width: 200px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      .search-bar input[type="button"] {
+        padding: 8px 16px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+      }
+      .section {
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .columns {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+      }
+      .column {
+        background-color: #fff;
+        padding: 20px;
+        margin: 10px;
+        flex-basis: calc(25% - 20px); /* Four columns */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+
+      /* Overlay styles */
+      .overlay {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
+        color: white; /* Text color */
+        padding: 20px;
+        z-index: 1000; /* Sit on top */
+        overflow: auto; /* Enable scroll if needed */
+        text-align: center; /*
+      }
+      .overlay h2 {
+        margin-top: 0;
+      }
+      .close-btn {
+        background-color: #ff0000; /* Red color for close button */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+      .overlay img {
+        width: 50%;
+        height: 100%;
+        text-align: left;
+      }
+
+      @media (max-width: 768px) {
+        .columns {
+          flex-direction: column;
+        }
+        .column {
+          flex-basis: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>My Website</h1>
+    </header>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <input type="button" value="Search" onclick="filterContent()" />
+    </div>
+
+    <main>
+      <!-- Section 1 -->
+      <div class="section">
+        <h2>Section 1</h2>
+        <div class="columns">
+          <div
+            class="column"
+            data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          >
+            <img src="5.png" alt="" />
+            <h3>Column 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div
+            class="column"
+            data-content="Quisque vel odio ut leo cursus dignissim."
+          >
+            <h3>Column 2</h3>
+            <p>Quisque vel odio ut leo cursus dignissim.</p>
+          </div>
+          <div
+            class="column"
+            data-content="Curabitur tincidunt lacus vel ligula sollicitudin."
+          >
+            <h3>Column 3</h3>
+            <p>Curabitur tincidunt lacus vel ligula sollicitudin.</p>
+          </div>
+          <div
+            class="column"
+            data-content="Praesent nec ex varius, facilisis lacus at, pretium augue."
+          >
+            <h3>Column 4</h3>
+            <p>Praesent nec ex varius, facilisis lacus at, pretium augue.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="section">
+        <h2>Section 2</h2>
+        <div class="columns">
+          <div
+            class="column"
+            data-content="Sed volutpat libero ac nisi feugiat, vitae luctus metus tristique."
+          >
+            <h3>Column 1</h3>
+            <p>
+              Sed volutpat libero ac nisi feugiat, vitae luctus metus tristique.
+            </p>
+          </div>
+          <div
+            class="column"
+            data-content="Duis pharetra nisi et risus ultricies fringilla."
+          >
+            <h3>Column 2</h3>
+            <p>Duis pharetra nisi et risus ultricies fringilla.</p>
+          </div>
+          <div
+            class="column"
+            data-content="Nam eget ex ut ligula euismod egestas ut eu purus."
+          >
+            <h3>Column 3</h3>
+            <p>Nam eget ex ut ligula euismod egestas ut eu purus.</p>
+          </div>
+          <div
+            class="column"
+            data-content="Integer at sapien vitae leo faucibus fermentum."
+          >
+            <h3>Column 4</h3>
+            <p>Integer at sapien vitae leo faucibus fermentum.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="section">
+        <h2>Section 3</h2>
+        <div class="columns">
+          <div
+            class="column"
+            data-content="Vivamus volutpat purus et dolor gravida, at malesuada libero bibendum."
+          >
+            <h3>Column 1</h3>
+            <p>
+              Vivamus volutpat purus et dolor gravida, at malesuada libero
+              bibendum.
+            </p>
+          </div>
+          <div
+            class="column"
+            data-content="Fusce aliquet felis vitae elit vehicula, nec hendrerit metus dictum."
+          >
+            <h3>Column 2</h3>
+            <p>
+              Fusce aliquet felis vitae elit vehicula, nec hendrerit metus
+              dictum.
+            </p>
+          </div>
+          <div
+            class="column"
+            data-content="Suspendisse potenti. Donec vitae arcu in lacus suscipit venenatis."
+          >
+            <h3>Column 3</h3>
+            <p>
+              Suspendisse potenti. Donec vitae arcu in lacus suscipit venenatis.
+            </p>
+          </div>
+          <div
+            class="column"
+            data-content="Etiam et est ac quam tempor euismod vel a eros."
+          >
+            <h3>Column 4</h3>
+            <p>Etiam et est ac quam tempor euismod vel a eros.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="section">
+        <h2>Section 4</h2>
+        <div class="columns">
+          <div
+            class="column"
+            data-content="Phasellus scelerisque sapien a dictum sagittis."
+          >
+            <h3>Column 1</h3>
+            <p>Phasellus scelerisque sapien a dictum sagittis.</p>
+          </div>
+          <div
+            class="column"
+            data-content="Mauris volutpat justo vel risus finibus, in tincidunt est scelerisque."
+          >
+            <h3>Column 2</h3>
+            <p>
+              Mauris volutpat justo vel risus finibus, in tincidunt est
+              scelerisque.
+            </p>
+          </div>
+          <div
+            class="column"
+            data-content="Aliquam erat volutpat. Curabitur id ex non velit gravida dignissim."
+          >
+            <h3>Column 3</h3>
+            <p>
+              Aliquam erat volutpat. Curabitur id ex non velit gravida
+              dignissim.
+            </p>
+          </div>
+          <div
+            class="column"
+            data-content="Nunc auctor est in odio bibendum, ac tempor quam ultrices."
+          >
+            <h3>Column 4</h3>
+            <p>Nunc auctor est in odio bibendum, ac tempor quam ultrices.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 My Website</p>
+    </footer>
+
+    <!-- Overlay for displaying search results -->
+    <div id="overlay" class="overlay">
+      <h2>Search Result</h2>
+      <div id="overlayContent"></div>
+      <button class="close-btn" onclick="closeOverlay()">Close</button>
+    </div>
+
+    <script>
+      function filterContent() {
+        const input = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const columns = document.querySelectorAll(".column");
+        let found = false; // Flag to check if any result is found
+        let overlayContent = "";
+
+        // Loop through the columns to find matches
+        columns.forEach((column) => {
+          const content = column.getAttribute("data-content").toLowerCase();
+          if (content.includes(input)) {
+            found = true; // Mark that we found at least one result
+            overlayContent += `<div><strong>${
+              column.querySelector("h3").innerText
+            }</strong>: ${column.innerHTML}</div>`;
+          }
+        });
+
+        // Display the overlay with results if any are found
+        if (found) {
+          document.getElementById("overlayContent").innerHTML = overlayContent;
+          document.getElementById("overlay").style.display = "block";
+        } else {
+          alert("No results found.");
+        }
+      }
+
+      function closeOverlay() {
+        document.getElementById("overlay").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
